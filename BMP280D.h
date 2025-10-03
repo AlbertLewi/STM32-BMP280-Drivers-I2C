@@ -61,24 +61,23 @@ typedef struct {
 	    float press;
 } BMP280HANDLE;
 
-
 //States of sensor connection
 typedef enum {
     BMP280_Ok,
     BMP280_Err
-} BMP280_result_t;
+} BMP280STATUS;
 
 
 //Functions, INIT, DATA ACQUISITION, LOW LEVEL FUNCTIONS
-BMP280_result_t bmp280_INIT(BMP280HANDLE *bmp280, I2C_HandleTypeDef *i2c, uint16_t i2c_addr);
+BMP280STATUS bmp280_INIT(BMP280HANDLE *bmp280, I2C_HandleTypeDef *i2c, uint16_t i2c_addr);
 
 //Read functions
-BMP280_result_t bmp280_Read_Temp(BMP280HANDLE *bmp280);
-BMP280_result_t bmp280_Read_Press(BMP280HANDLE *bmp280);
+BMP280STATUS bmp280_Read_Temp(BMP280HANDLE *bmp280);
+BMP280STATUS bmp280_Read_Press(BMP280HANDLE *bmp280);
 
 //LOW Level Functions
-BMP280_result_t bmp280_Read_Reg(BMP280HANDLE *bmp280, uint8_t reg, uint8_t *data); //-> Reads single register
-BMP280_result_t bmp280_Read_Regs(BMP280HANDLE *bmp280, uint8_t reg, uint8_t *data, uint8_t length); //-> Reads multiple
-BMP280_result_t bmp280_Write_Reg(BMP280HANDLE *bmp280, uint8_t reg, uint8_t *data); //Writes to a register
+BMP280STATUS bmp280_Read_Reg(BMP280HANDLE *bmp280, uint8_t reg, uint8_t *data); //-> Reads single register
+BMP280STATUS bmp280_Read_Regs(BMP280HANDLE *bmp280, uint8_t reg, uint8_t *data, uint8_t length); //-> Reads multiple
+BMP280STATUS bmp280_Write_Reg(BMP280HANDLE *bmp280, uint8_t reg, uint8_t *data); //Writes to a register
 
 #endif /* BMP280D_H_ */
